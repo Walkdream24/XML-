@@ -13,6 +13,7 @@ protocol XMLProcessProtocol: class{
     // TODO
     // PARSEされたものをviewcontrollerに返すために、引数に結果を渡さないといけない
     // 上記を追加で修正する必要あり
+    var feedItems: [FeedItem] { get set }
     
     func endParse()
 }
@@ -20,8 +21,8 @@ protocol XMLProcessProtocol: class{
 class XML: NSObject, XMLParserDelegate {
     
     weak var delegateXML: XMLProcessProtocol?
-    var feedItems = [FeedItem]()
-    var currentElementName: String!
+    
+    var currentElementName: String = ""
     
     let ITEM_ELEMENT_NAME = "item"
     let TITLE_ELEMENT_NAME = "title"
@@ -48,7 +49,7 @@ class XML: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
         if elementName == ITEM_ELEMENT_NAME {
-            self.feedItems.append(FeedItem())
+            delegateXML?.feedItems.append(FeedItem())
         } else {
             currentElementName = elementName
         }
@@ -57,16 +58,16 @@ class XML: NSObject, XMLParserDelegate {
     
     // 開始タグと終了タグでくくられたデータがあったときに実行されるメソッド
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
-        if self.feedItems.count > 0 {
-            let lastItem = self.feedItems[self.feedItems.count - 1]
+        let count = delegateXML?.feedItems.count ?? 0
+        if  count > 0 {
+            let lastItem = delegateXML?.feedItems[count - 1]
             switch self.currentElementName {
             case TITLE_ELEMENT_NAME:
-                let tmpString = lastItem.title
-                lastItem.title = (tmpString != nil) ? tmpString! + string : string
+                let tmpString = lastItem?.title ?? ""
+                lastItem?.title = (tmpString != nil) ? tmpString + string : string
                 
             case LINK_ELEMENT_NAME:
-                lastItem.url = string
+                lastItem?.url = string
             default: break
             }
         }
@@ -77,7 +78,7 @@ class XML: NSObject, XMLParserDelegate {
     
     // 解析中に要素の終了タグがあったときに実行されるメソッド
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        self.currentElementName = nil
+        self.currentElementName = ""
         print("終了タグ:" + elementName)
     }
 
