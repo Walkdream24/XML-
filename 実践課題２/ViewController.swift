@@ -8,13 +8,71 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XMLProcessProtocol {
+    
+    
 
+    @IBOutlet weak var tableView: UITableView!
+
+    let xml:XML = XML()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+        xml.delegateXML = self
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        
+        
+       
+        
+        tableView.register(UINib(nibName: "XMLTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+     
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        let xml: XML = XML()
+        xml.loadXml()
+    }
+    
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return xml.feedItems.count
 
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! XMLTableViewCell
+        let feedItem = xml.feedItems
+        let feedItemm = feedItem[indexPath.row]
+        
+        cell.titleLabel.text = feedItemm.title
+        return cell
+
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let feedItem = xml.feedItems
+        let feedItemm = feedItem[indexPath.row]
+        UIApplication.shared.open(URL(string: feedItemm.url)!, options: [:], completionHandler: nil)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    // XMLパースが終了したので、あとはviewで表示の処理する
+    func endParse() {
+        self.tableView.reloadData()
+        
+    }
+    
 
 }
 

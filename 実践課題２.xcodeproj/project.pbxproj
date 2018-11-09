@@ -14,6 +14,11 @@
 		E26293AA21928264006067A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E26293A821928264006067A3 /* LaunchScreen.storyboard */; };
 		E26293B521928264006067A3 /* _____Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26293B421928264006067A3 /* _____Tests.swift */; };
 		E26293C021928264006067A3 /* _____UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26293BF21928264006067A3 /* _____UITests.swift */; };
+		E26293CF2192832B006067A3 /* XMLTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26293CD2192832B006067A3 /* XMLTableViewCell.swift */; };
+		E26293D02192832B006067A3 /* XMLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26293CE2192832B006067A3 /* XMLTableViewCell.xib */; };
+		E26293D4219291B9006067A3 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26293D3219291B9006067A3 /* XML.swift */; };
+		E26293D82192C541006067A3 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26293D72192C541006067A3 /* FeedItem.swift */; };
+		E26294142192E21D006067A3 /* DelegateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26294132192E21D006067A3 /* DelegateTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		E26293BB21928264006067A3 /* 実践課題２UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "実践課題２UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E26293BF21928264006067A3 /* _____UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "_____UITests.swift"; sourceTree = "<group>"; };
 		E26293C121928264006067A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E26293CD2192832B006067A3 /* XMLTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLTableViewCell.swift; sourceTree = "<group>"; };
+		E26293CE2192832B006067A3 /* XMLTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XMLTableViewCell.xib; sourceTree = "<group>"; };
+		E26293D3219291B9006067A3 /* XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
+		E26293D72192C541006067A3 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		E26294132192E21D006067A3 /* DelegateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +109,11 @@
 			children = (
 				E262939F21928261006067A3 /* AppDelegate.swift */,
 				E26293A121928261006067A3 /* ViewController.swift */,
+				E26293D3219291B9006067A3 /* XML.swift */,
+				E26293D72192C541006067A3 /* FeedItem.swift */,
+				E26294132192E21D006067A3 /* DelegateTableView.swift */,
+				E26293CD2192832B006067A3 /* XMLTableViewCell.swift */,
+				E26293CE2192832B006067A3 /* XMLTableViewCell.xib */,
 				E26293A321928261006067A3 /* Main.storyboard */,
 				E26293A621928264006067A3 /* Assets.xcassets */,
 				E26293A821928264006067A3 /* LaunchScreen.storyboard */,
@@ -229,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E26293D02192832B006067A3 /* XMLTableViewCell.xib in Resources */,
 				E26293AA21928264006067A3 /* LaunchScreen.storyboard in Resources */,
 				E26293A721928264006067A3 /* Assets.xcassets in Resources */,
 				E26293A521928261006067A3 /* Main.storyboard in Resources */,
@@ -256,7 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E26293D4219291B9006067A3 /* XML.swift in Sources */,
 				E26293A221928261006067A3 /* ViewController.swift in Sources */,
+				E26293CF2192832B006067A3 /* XMLTableViewCell.swift in Sources */,
+				E26293D82192C541006067A3 /* FeedItem.swift in Sources */,
+				E26294142192E21D006067A3 /* DelegateTableView.swift in Sources */,
 				E26293A021928261006067A3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

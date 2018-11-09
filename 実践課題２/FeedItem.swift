@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+class FeedItem {
+    var title: String!
+    var url: String!
+}

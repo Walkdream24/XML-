@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DelegateTableViewCell: UITableViewCell {
+class XMLTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
