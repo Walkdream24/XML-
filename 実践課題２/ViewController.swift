@@ -15,6 +15,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
 
     let xml:XML = XML()
+    var feedItems = [FeedItem]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -42,13 +44,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return xml.feedItems.count
+        return feedItems.count
 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! XMLTableViewCell
-        let feedItem = xml.feedItems
+        let feedItem = feedItems
         let feedItemm = feedItem[indexPath.row]
         
         cell.titleLabel.text = feedItemm.title
@@ -57,8 +59,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let feedItem = xml.feedItems
-        let feedItemm = feedItem[indexPath.row]
+        let feedItemm = feedItems[indexPath.row]
         UIApplication.shared.open(URL(string: feedItemm.url)!, options: [:], completionHandler: nil)
     }
     
